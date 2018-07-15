@@ -10,8 +10,17 @@ public class PageController
 	@RequestMapping(value= {"/","/home","/index"})
 	public ModelAndView dashboard()
 	{
-		ModelAndView mv = new ModelAndView("dashboard");
-//		mv.addObject("hi" ,"hello J. Aditya");
+		ModelAndView mv = new ModelAndView("page");
+		mv.addObject("title", "Dashboard");
+		mv.addObject("userClickDashboard", true);
+		return mv;
+	}
+	@RequestMapping(value= {"/login"})
+	public ModelAndView login()
+	{
+		ModelAndView mv = new ModelAndView("page");
+		mv.addObject("title", "Login");
+		mv.addObject("userClickLogin", true);
 		return mv;
 	}
 	
@@ -22,12 +31,4 @@ public class PageController
 		mv.addObject("hi" ,req2);
 		return mv;
 	}*/
-	
-	@RequestMapping(value= {"/login"})
-	public ModelAndView login()
-	{
-		ModelAndView mv = new ModelAndView("login");
-	//	mv.addObject("hi" ,req2);
-		return mv;
-	}
 }
