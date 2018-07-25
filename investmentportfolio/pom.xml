@@ -13,6 +13,12 @@
   	<spring.version> 4.3.5.RELEASE</spring.version>
   </properties>
   <dependencies>
+  <!--backend dependency-->
+  <dependency>
+  <groupId>net.jr</groupId>
+  <artifactId>investmentportfoliobackend</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  </dependency>
   	<!-- JAVA EE -->
 	<dependency>
 	    <groupId>javax</groupId>

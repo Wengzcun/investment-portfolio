@@ -32,9 +32,7 @@
 	
 	<!-- Content Start  -->
 		<!-- Load Dashboard Start -->
-		<c:if test=${userClickLogin == true}>
-		    <%@include file="login.jsp" %>
-		</c:if>
+			<%@include file="dashboard.jsp" %>
 		
 		<!-- Load Dashboard End -->
 	<!-- Content End -->    
