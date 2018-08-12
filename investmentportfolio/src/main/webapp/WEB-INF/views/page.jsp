@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <spring:url var="vendor" value="/resources/vendor" />
 <spring:url var="css" value="/resources/css" />
 <spring:url var="js" value="/resources/js" />

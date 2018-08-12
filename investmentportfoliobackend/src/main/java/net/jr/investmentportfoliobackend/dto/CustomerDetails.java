@@ -1,58 +1,65 @@
 package net.jr.investmentportfoliobackend.dto;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class CustomerDetails {
-	private static int customerID;
-	private static String customerName;
-	private static String customerEmail;
-	private static String customerPhone;
-	private static String customerPAN;
-	private static String customerPWD;
-	private static boolean isActive=false;
-	public static int getCustomerID() {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int customerID;
+	private String customerName;
+	private String customerEmail;
+	private String customerPhone;
+	private String customerPAN;
+	private String customerPWD;
+	private boolean isActive=false;
+	public int getCustomerID() {
 		return customerID;
 	}
-	public static void setCustomerID(int customerID) {
-		CustomerDetails.customerID = customerID;
+	public void setCustomerID(int customerID) {
+		this.customerID = customerID;
 	}
-
-	public static String getCustomerName() {
+	public String getCustomerName() {
 		return customerName;
 	}
-	public static void setCustomerName(String customerName) {
-		CustomerDetails.customerName = customerName;
+	public void setCustomerName(String customerName) {
+		this.customerName = customerName;
 	}
-	public static String getCustomerEmail() {
+	public String getCustomerEmail() {
 		return customerEmail;
 	}
-	public static void setCustomerEmail(String customerEmail) {
-		CustomerDetails.customerEmail = customerEmail;
+	public void setCustomerEmail(String customerEmail) {
+		this.customerEmail = customerEmail;
 	}
-	public static String getCustomerPhone() {
+	public String getCustomerPhone() {
 		return customerPhone;
 	}
-	public static void setCustomerPhone(String customerPhone) {
-		CustomerDetails.customerPhone = customerPhone;
+	public void setCustomerPhone(String customerPhone) {
+		this.customerPhone = customerPhone;
 	}
-	public static String getCustomerPAN() {
+	public String getCustomerPAN() {
 		return customerPAN;
 	}
-	public static void setCustomerPAN(String customerPAN) {
-		CustomerDetails.customerPAN = customerPAN;
+	public void setCustomerPAN(String customerPAN) {
+		this.customerPAN = customerPAN;
 	}
-	public static String getCustomerPWD() {
+	public String getCustomerPWD() {
 		return customerPWD;
 	}
-	public static void setCustomerPWD(String customerPWD) {
-		CustomerDetails.customerPWD = customerPWD;
+	public void setCustomerPWD(String customerPWD) {
+		this.customerPWD = customerPWD;
 	}
-	public static boolean isActive() {
+	public boolean isActive() {
 		return isActive;
 	}
-	public static void setActive(boolean isActive) {
-		CustomerDetails.isActive = isActive;
+	public void setActive(boolean isActive) {
+		this.isActive = isActive;
 	}
 	
 	
 	
-
 }

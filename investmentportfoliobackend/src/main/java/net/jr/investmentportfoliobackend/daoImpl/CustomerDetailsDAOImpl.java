@@ -37,12 +37,15 @@ public class CustomerDetailsDAOImpl implements CustomerDetailsDAO {
 		
 		customers.add(customerDetails);
 
+		customerDetails = new CustomerDetails();
 		customerDetails.setCustomerID(1);
 		customerDetails.setCustomerName("Anuradha");
 		customerDetails.setCustomerEmail("anu@gmail.com");
 		customerDetails.setCustomerPAN("ABCD981914");
 		customerDetails.setCustomerPhone("9821670590");
 		customerDetails.setActive(true);
+		customers.add(customerDetails);
+	
 	}
 	
 	@Override

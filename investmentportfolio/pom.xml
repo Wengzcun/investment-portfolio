@@ -11,28 +11,39 @@
   	<javaee.version>8.0</javaee.version>
   	<junit.version>3.8.1</junit.version>
   	<spring.version> 4.3.5.RELEASE</spring.version>
+  	<jstl.version>1.2</jstl.version>
+  	
   </properties>
   <dependencies>
-  <!--backend dependency-->
-  <dependency>
-  <groupId>net.jr</groupId>
-  <artifactId>investmentportfoliobackend</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  </dependency>
-  	<!-- JAVA EE -->
-	<dependency>
+  
+<dependency>
+        <groupId>javax.servlet</groupId>
+        <artifactId>jstl</artifactId>
+        <version>1.2</version>
+    </dependency>
+		
+	  <!--backend dependency-->
+	  <dependency>
+	  <groupId>net.jr</groupId>
+	  <artifactId>investmentportfoliobackend</artifactId>
+	  <version>0.0.1-SNAPSHOT</version>
+	  
+	  </dependency>
+	  
+  	    <!-- JAVA EE -->
+	  <dependency>
 	    <groupId>javax</groupId>
 	    <artifactId>javaee-api</artifactId>
 	    <version>${javaee.version}</version>
 	    <scope>provided</scope>
-	</dependency>
+	  </dependency>
   
-  	<!-- JUNIT -->
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>${junit.version}</version>
-      <scope>provided</scope>
+  	  <!-- JUNIT -->
+      <dependency>
+	      <groupId>junit</groupId>
+	      <artifactId>junit</artifactId>
+	      <version>${junit.version}</version>
+	      <scope>provided</scope>
     </dependency>
 	<!-- spring-web-mvc -->
 	<dependency>

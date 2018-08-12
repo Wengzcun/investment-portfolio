@@ -6,13 +6,17 @@
   <artifactId>investmentportfoliobackend</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
-
+  
   <name>investmentportfoliobackend</name>
   <url>http://maven.apache.org</url>
 
   <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
       	<spring.version> 4.3.5.RELEASE</spring.version>
+      	<h2.version>1.4.197</h2.version>
+      	<hibernate.version>5.2.7.Final</hibernate.version>
+  		<orm.version>5.0.8.RELEASE</orm.version>
+  		<connectionpooling.version>2.1.1</connectionpooling.version>
   </properties>
 
   <dependencies>
@@ -26,9 +30,39 @@
     	<!-- spring-web-mvc -->
 	<dependency>
 	    <groupId>org.springframework</groupId>
-	    <artifactId>spring-webmvc</artifactId>
+	    <artifactId>spring-context</artifactId>
 	    <version>${spring.version}</version>
 	</dependency>
+	
+	<!-- H2 Database -->
+		<dependency>
+		    <groupId>com.h2database</groupId>
+		    <artifactId>h2</artifactId>
+		    <version>${h2.version}</version>
+		</dependency>
+
+		<!-- hibernate-core -->
+		<dependency>
+		    <groupId>org.hibernate</groupId>
+		    <artifactId>hibernate-core</artifactId>
+		    <version>${hibernate.version}</version>
+		</dependency>
+
+		<!-- spring-orm -->
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-orm</artifactId>
+		    <version>${orm.version}</version>
+		</dependency>
+
+		<!-- Database connection pooling -->
+		<dependency>
+		    <groupId>org.apache.commons</groupId>
+		    <artifactId>commons-dbcp2</artifactId>
+		    <version>${connectionpooling.version}</version>
+		</dependency>
+
+
   </dependencies>
   
     <build>
