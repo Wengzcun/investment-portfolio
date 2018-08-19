@@ -1,22 +1,39 @@
 package net.jr.investmentportfoliobackend.dto;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "customerdetails")
 public class CustomerDetails {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="customerid")
 	private int customerID;
+	
+	@Column(name="customername")
 	private String customerName;
+	
+	@Column(name="customeremail")
 	private String customerEmail;
+	
+	@Column(name="customerphone")
 	private String customerPhone;
+	
+	@Column(name="customerpan")
 	private String customerPAN;
+	
+	@Column(name="customerpwd")
 	private String customerPWD;
+	
+	@Column(name="is_active")
 	private boolean isActive=false;
+	
 	public int getCustomerID() {
 		return customerID;
 	}
@@ -60,6 +77,11 @@ public class CustomerDetails {
 		this.isActive = isActive;
 	}
 	
-	
+	@Override
+	public String toString() {
+		return "CustomerDetails [customerID=" + customerID + ", customerName=" + customerName + ", customerEmail="
+				+ customerEmail + ", customerPhone=" + customerPhone + ", customerPAN=" + customerPAN + ", customerPWD="
+				+ customerPWD + ", isActive=" + isActive + "]";
+	}
 	
 }

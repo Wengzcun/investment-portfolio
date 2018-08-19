@@ -14,7 +14,7 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
-@ComponentScan(basePackages= {"net.kzn.shoppingbackend.dto"})
+@ComponentScan(basePackages= {"net.jr.investmentportfoliobackend.dto"})
 @EnableTransactionManagement
 
 public class HibernateConfig {
@@ -62,14 +62,14 @@ public class HibernateConfig {
 		properties.put("hibernate.format_sql", "true");
 		
 		// TODO Auto-generated method stub
-		return null;
+		return properties;
 	}
 
 	//Transaction Manager Bean
 	@Bean
-	public HibernateTransactionManager getTransactionManager() {
+	public HibernateTransactionManager getTransactionManager(SessionFactory sessionFactory) {
 		
-		HibernateTransactionManager hibernateTransactionManager = new HibernateTransactionManager();
+		HibernateTransactionManager hibernateTransactionManager = new HibernateTransactionManager(sessionFactory);
 		
 		return hibernateTransactionManager; 
 	}

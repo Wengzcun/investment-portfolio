@@ -3,7 +3,10 @@ package net.jr.investmentportfoliobackend.daoImpl;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import net.jr.investmentportfoliobackend.dao.CustomerDetailsDAO;
 import net.jr.investmentportfoliobackend.dto.CustomerDetails;
@@ -11,6 +14,8 @@ import net.jr.investmentportfoliobackend.dto.CustomerDetails;
 @Repository("customerDetailsDao")
 public class CustomerDetailsDAOImpl implements CustomerDetailsDAO {
 
+	@Autowired
+	private SessionFactory sessionFactory;
 	private static List<CustomerDetails> customers = new ArrayList<>();
 	
 	static {
@@ -54,4 +59,27 @@ public class CustomerDetailsDAOImpl implements CustomerDetailsDAO {
 		return customers;
 	}
 
+	@Override
+	@Transactional
+	public boolean add(CustomerDetails customerDetails) {
+		// TODO Auto-generated method stub
+		try {
+			sessionFactory.getCurrentSession().persist(customerDetails);
+			
+			return true;
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	@Override
+	public CustomerDetails get(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
 }
