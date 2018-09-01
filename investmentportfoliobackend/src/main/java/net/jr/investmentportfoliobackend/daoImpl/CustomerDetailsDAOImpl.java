@@ -65,7 +65,6 @@ public class CustomerDetailsDAOImpl implements CustomerDetailsDAO {
 		// TODO Auto-generated method stub
 		try {
 			sessionFactory.getCurrentSession().persist(customerDetails);
-			
 			return true;
 			
 		} catch (Exception e) {

@@ -13,7 +13,7 @@ public class CustomerDetails {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="customerid")
+	@Column(name="id")
 	private int customerID;
 	
 	@Column(name="customername")
@@ -76,7 +76,6 @@ public class CustomerDetails {
 	public void setActive(boolean isActive) {
 		this.isActive = isActive;
 	}
-	
 	@Override
 	public String toString() {
 		return "CustomerDetails [customerID=" + customerID + ", customerName=" + customerName + ", customerEmail="
