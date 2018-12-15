@@ -27,15 +27,15 @@ public class HibernateConfig {
 	private final static String DATABASE_PASSWORD="";
 	
 	//Get Source Bean
-	@Bean
-	private DataSource getDataSource()
+	@Bean 
+	public DataSource getDataSource()
 	{
 	//Providing the database connection information
 		BasicDataSource dataSource = new BasicDataSource();
 		dataSource.setDriverClassName(DATABASE_DRIVER);
-		dataSource.setDriverClassName(DATABASE_URL);
-		dataSource.setDriverClassName(DATABASE_USERNAME);
-		dataSource.setDriverClassName(DATABASE_PASSWORD);
+		dataSource.setUrl(DATABASE_URL);
+		dataSource.setUsername(DATABASE_USERNAME);
+		dataSource.setPassword(DATABASE_PASSWORD);
 
 		
 		return dataSource;
@@ -47,9 +47,8 @@ public class HibernateConfig {
 	LocalSessionFactoryBuilder builder= new LocalSessionFactoryBuilder(datasource);
 	builder.addProperties(getHibernateProperties());
 	builder.scanPackages("net.jr.investmentportfoliobackend.dto");
-	
+
 	return builder.buildSessionFactory();
-	
 	
 	}
 	
