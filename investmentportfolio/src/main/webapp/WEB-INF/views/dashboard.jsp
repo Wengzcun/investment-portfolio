@@ -124,25 +124,31 @@
       <!-- Example DataTables Card-->
       <div class="card mb-3">
         <div class="card-header">
-          <i class="fa fa-table"></i> Data Table Example</div>
+          <i class="fa fa-table"></i> Data Table Example
+        	<button class="btn btn-primary" style="float:right" onclick="addRecordModal()">Add Record</button>
+        </div>
         <div class="card-body">
           <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
               <thead>
                 <tr>
+                  <th>Action</th>
                   <th>Name</th>
                   <th>Email</th>
                   <th>Phone</th>
                   <th>PAN</th>
+                  <th>View</th>
                 </tr>
               </thead>
               <tbody>
                	<c:forEach items="${customers}" var = "customer">
 	                <tr>
+	                  <th>Edit|Delete</th>
 	                  <th>${customer.customerName}</th>
 	                  <th>${customer.customerEmail}</th>
 	                  <th>${customer.customerPhone}</th>
 	                  <th>${customer.customerPAN}</th>
+	                  <th>View</th>
 	                </tr>
               	</c:forEach>
  
@@ -155,4 +161,46 @@
     </div>
     <!-- /.container-fluid-->
     <!-- /.content-wrapper-->
+    
+    <div class="modal fade" id="addRecordModal"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	      <div class="modal-dialog" role="document">
+	        <div class="modal-content">
+	          <div class="modal-header">
+	            <h5 class="modal-title" id="exampleModalLabel">Add Customer Record</h5>
+	            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+	              <span aria-hidden="true">×</span>
+	            </button>
+	          </div>
+	          <div class="modal-body">
+	          <form action="/action_page.php">
+				  <div class="form-group">
+				    <label for="email">Name:</label>
+				    <input type="email" class="form-control" id="email">
+				  </div>
+				  <div class="form-group">
+				    <label for="email">Email:</label>
+				    <input type="email" class="form-control" id="email">
+				  </div>
+				  <div class="form-group">
+				    <label for="email">Phone:</label>
+				    <input type="email" class="form-control" id="email">
+				  </div>
+				  <div class="form-group">
+				    <label for="email">Pan No:</label>
+				    <input type="email" class="form-control" id="email">
+				  </div>
+				  <div class="form-group">
+				    <label for="pwd">Password:</label>
+				    <input type="password" class="form-control" id="pwd">
+				  </div>
+			 </form>
+	          </div>
+	          <div class="modal-footer">
+	            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+	            <a class="btn btn-primary" href="#">Submit</a>
+	          </div>
+	        </div>
+	      </div>
+    </div>
+    
   </div>

@@ -63,6 +63,7 @@
     <!-- Custom scripts for this page-->
     <script src="${js}/sb-admin-datatables.min.js"></script>
     <script src="${js}/sb-admin-charts.min.js"></script>
+    <script src="${js}/validate.js"></script>
 
 </body>
 

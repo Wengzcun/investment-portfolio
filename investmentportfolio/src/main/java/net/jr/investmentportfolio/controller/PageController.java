@@ -11,7 +11,7 @@ import net.jr.investmentportfoliobackend.dao.CustomerDetailsDAO;
 public class PageController 
 {
 	@Autowired
-	private CustomerDetailsDAO customerDetailsDao;
+	private CustomerDetailsDAO customerDetailsDAO;
 	
 	@RequestMapping(value= {"/","/home","/index"})
 	public ModelAndView dashboard()
@@ -20,7 +20,7 @@ public class PageController
 		mv.addObject("title", "Dashboard");
 		
 		//Passing the list of customers
-		mv.addObject("customers", customerDetailsDao.customerList());
+		mv.addObject("customers", customerDetailsDAO.customerList());
 		
 		mv.addObject("userClickDashboard", true);
 		return mv;
