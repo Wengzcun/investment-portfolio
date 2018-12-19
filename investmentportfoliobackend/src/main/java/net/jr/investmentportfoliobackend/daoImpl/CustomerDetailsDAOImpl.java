@@ -70,6 +70,7 @@ public class CustomerDetailsDAOImpl implements CustomerDetailsDAO {
 	public boolean add(CustomerDetails customerDetails) {
 		// TODO Auto-generated method stub
 		try {
+			customerDetails.setActive(true);
 			sessionFactory.getCurrentSession().persist(customerDetails);;
 			return true;
 			

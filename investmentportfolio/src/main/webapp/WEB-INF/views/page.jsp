@@ -33,8 +33,36 @@
 	<!-- Footer End -->
 	
 	<!-- Content Start  -->
+		
+		<!-- Load Add Customer Start -->
+		<c:if test="${userClickAdd == true}">
+			<%@include file="addCustomer.jsp" %>
+		</c:if>
+		
 		<!-- Load Dashboard Start -->
+		<c:if test="${userClickDashboard == true}">
 			<%@include file="dashboard.jsp" %>
+		</c:if>
+		
+		<!-- Load Dashboard Start -->
+		<c:if test="${userClickFundCategory == true}">
+			<%@include file="fundCategory.jsp" %>
+		</c:if>
+		<!-- Load Add FUnd Category Form -->
+		<c:if test="${userClickAddFundCatgory == true}">
+			<%@include file="addFundCategory.jsp" %>
+		</c:if>
+		
+		<!-- Load Add FUnd Category Form -->
+		<c:if test="${userClickFundScheme == true}">
+			<%@include file="fundScheme.jsp" %>
+		</c:if>
+		
+		<!-- Load Add FUnd Category Form -->
+		<c:if test="${userClickAddFundScheme == true}">
+			<%@include file="addFundScheme.jsp" %>
+		</c:if>
+		
 		
 		<!-- Load Dashboard End -->
 	<!-- Content End -->    

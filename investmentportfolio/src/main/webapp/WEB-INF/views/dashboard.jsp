@@ -1,15 +1,13 @@
   <div class="content-wrapper">
     <div class="container-fluid">
-      <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <a href="#">Dashboard</a>
+          <a href="">Dashboard</a>
         </li>
         <li class="breadcrumb-item active">My Dashboard</li>
       </ol>
-      <!-- Icon Cards-->
       <div class="row">
-        <div class="col-xl-3 col-sm-6 mb-3">
+        <!-- <div class="col-xl-3 col-sm-6 mb-3">
           <div class="card text-white bg-primary o-hidden h-100">
             <div class="card-body">
               <div class="card-body-icon">
@@ -74,7 +72,6 @@
           </div>
         </div>
       </div>
-      <!-- Area Chart Example-->
       <div class="card mb-3">
         <div class="card-header">
           <i class="fa fa-area-chart"></i> Area Chart Example</div>
@@ -85,8 +82,7 @@
       </div>
       <div class="row">
         <div class="col-lg-8">
-          <!-- Example Bar Chart Card-->
-          <div class="card mb-3">
+            <div class="card mb-3">
             <div class="card-header">
               <i class="fa fa-bar-chart"></i> Bar Chart Example</div>
             <div class="card-body">
@@ -108,9 +104,8 @@
             </div>
             <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
           </div>
-        </div>
+        </div> 
         <div class="col-lg-4">
-          <!-- Example Pie Chart Card-->
           <div class="card mb-3">
             <div class="card-header">
               <i class="fa fa-pie-chart"></i> Pie Chart Example</div>
@@ -119,13 +114,13 @@
             </div>
             <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
           </div>
-        </div>
-      </div>
+        </div> --> 
+      </div> 
       <!-- Example DataTables Card-->
       <div class="card mb-3">
         <div class="card-header">
-          <i class="fa fa-table"></i> Data Table Example
-        	<button class="btn btn-primary" style="float:right" onclick="addRecordModal()">Add Record</button>
+          <i class="fa fa-table"></i> Customer Details
+        	<a class="btn btn-primary" style="float:right" href="${contextRoot}/investmentportfolio/addcustomer">Add Record</a>
         </div>
         <div class="card-body">
           <div class="table-responsive">
@@ -159,48 +154,5 @@
         <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
       </div>
     </div>
-    <!-- /.container-fluid-->
-    <!-- /.content-wrapper-->
-    
-    <div class="modal fade" id="addRecordModal"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	      <div class="modal-dialog" role="document">
-	        <div class="modal-content">
-	          <div class="modal-header">
-	            <h5 class="modal-title" id="exampleModalLabel">Add Customer Record</h5>
-	            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-	              <span aria-hidden="true">×</span>
-	            </button>
-	          </div>
-	          <div class="modal-body">
-	          <form action="/action_page.php">
-				  <div class="form-group">
-				    <label for="email">Name:</label>
-				    <input type="email" class="form-control" id="email">
-				  </div>
-				  <div class="form-group">
-				    <label for="email">Email:</label>
-				    <input type="email" class="form-control" id="email">
-				  </div>
-				  <div class="form-group">
-				    <label for="email">Phone:</label>
-				    <input type="email" class="form-control" id="email">
-				  </div>
-				  <div class="form-group">
-				    <label for="email">Pan No:</label>
-				    <input type="email" class="form-control" id="email">
-				  </div>
-				  <div class="form-group">
-				    <label for="pwd">Password:</label>
-				    <input type="password" class="form-control" id="pwd">
-				  </div>
-			 </form>
-	          </div>
-	          <div class="modal-footer">
-	            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-	            <a class="btn btn-primary" href="#">Submit</a>
-	          </div>
-	        </div>
-	      </div>
-    </div>
-    
+    <!-- /.container-fluid--> 
   </div>

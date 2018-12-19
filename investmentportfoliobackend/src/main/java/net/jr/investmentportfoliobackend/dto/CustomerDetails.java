@@ -32,7 +32,7 @@ public class CustomerDetails {
 	private String customerPWD;
 	
 	@Column(name="is_active")
-	private boolean isActive;
+	private boolean isActive = true;
 	
 	public int getCustomerID() {
 		return customerID;
