@@ -69,7 +69,7 @@
 		</c:if>
 		
 		<!-- Load Add Life INsurance Add Form -->
-		<c:if test="${userClickAddLifeInsurance == true}">
+		<c:if test="${userClickAddLifeInsuracne == true}">
 			<%@include file="addLifeInsurance.jsp" %>
 		</c:if>
 		

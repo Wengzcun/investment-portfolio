@@ -10,23 +10,35 @@
       <div class="card mb-3">
         <div class="card-header">
           <i class="fa fa-table"></i> Scheme
-        	<a class="btn btn-primary" style="float:right" href="${contextRoot}/investmentportfolio/addlifeinsuracne">Add Scheme</a>
+        	<a class="btn btn-primary" style="float:right" href="${contextRoot}/investmentportfolio/addlifeinsuracne">Add Insurance</a>
         </div>
         <div class="card-body">
           <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
               <thead>
                 <tr>
-                  <th>Action</th>
-                  <th>Name</th>
+                  <th>Policy Date</th>
+                  <th>Amount</th>
+                  <th>Policy Period</th>
+                  <th>Policy Number</th>
+                  <th>Sum Assured</th>
+                  <th>Policy Date</th>
+                  <th>Scheme Name</th>
+                  <th>Customer Name</th>
                 </tr>
               </thead>
               <tbody>
                	<c:forEach items="${lifeinsurance}" var= "lifeinsurance">
 	                <tr>
-	                  <th>Edit|Delete</th>
 	                  <th>${lifeinsurance.policydate}</th>
-	                </tr>
+	                  <th>${lifeinsurance.amount}</th>	
+	                  <th>${lifeinsurance.policyperiod}</th>
+	                  <th>${lifeinsurance.policynumber}</th>
+	                  <th>${lifeinsurance.sumassured}</th>
+	                  <th>${lifeinsurance.policylastdate}</th>
+	                  <th>${lifeinsurance.schemename}</th> 
+	                  <th>${lifeinsurance.customername}</th> 
+	            </tr>
               	</c:forEach>
  
               </tbody>
