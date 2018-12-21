@@ -15,9 +15,11 @@ import org.springframework.web.servlet.ModelAndView;
 import net.jr.investmentportfoliobackend.dao.CustomerDetailsDAO;
 import net.jr.investmentportfoliobackend.dao.FundCategoryDAO;
 import net.jr.investmentportfoliobackend.dao.FundSchemeDAO;
+import net.jr.investmentportfoliobackend.dao.LifeInsuranceDAO;
 import net.jr.investmentportfoliobackend.dto.CustomerDetails;
 import net.jr.investmentportfoliobackend.dto.FundCategory;
 import net.jr.investmentportfoliobackend.dto.FundScheme;
+import net.jr.investmentportfoliobackend.dto.LifeInsurance;
 
 @Controller
 public class PageController 
@@ -28,6 +30,9 @@ public class PageController
 	private FundCategoryDAO fundCategoryDAO;
 	@Autowired
 	private FundSchemeDAO fundSchemeDAO;
+	@Autowired
+	private LifeInsuranceDAO LifeInsuranceDAO;
+	
 	
 	@RequestMapping(value= {"/","/home","/index"})
 	public ModelAndView dashboard()
@@ -132,9 +137,46 @@ public class PageController
 		return "redirect:/fundscheme";
 
 	}
+
 	
+	
+	//Fund Scheme
+	@RequestMapping(value= {"/lifeinsurance"})
+	public ModelAndView viewLifeInsuracne()
+	{
+		ModelAndView mv = new ModelAndView("page");
+		mv.addObject("title", "Life Insuracne");
+		
+		//Passing the list of customers
+		mv.addObject("lifeinsurance", LifeInsuranceDAO.lifeInsuranceList());
+		
+		mv.addObject("userClickLifeInsurance", true);
+		return mv;
+	}
+	
+	@RequestMapping(value= {"/addlifeinsuracne"})
+	public ModelAndView addLifeInsurance()
+	{
+		LifeInsurance lifeInsurance = new LifeInsurance();
+
+		ModelAndView mv = new ModelAndView("page");
+		mv.addObject("title", "Add Life Insuracne");
+		mv.addObject("addLifeInsurance" ,lifeInsurance);		
+		mv.addObject("userClickAddLifeInsuracne", true);
+		return mv;
+
+	}
+	
+	@RequestMapping(value= {"/submitLifeInsurance"},method=RequestMethod.POST)
+	public String addLifeInsuracne(@ModelAttribute("addLifeInsuracne") LifeInsurance lifeInsurance)
+	{
+		LifeInsuranceDAO.add(lifeInsurance);
+		return "redirect:/lifeinsurance";
+
+	}
+
 	 @ModelAttribute("fundcategorylist")
-     public Map<Integer, String> getCountryList() {
+     public Map<Integer, String> getFundCategoryList() {
 	      Map<Integer, String> fundCateogryList = new HashMap<Integer, String>();
 	      List<FundCategory> fundCatList = fundCategoryDAO.fundCategoryList();
 	      Iterator<FundCategory> iterator = fundCatList.listIterator();
@@ -143,5 +185,29 @@ public class PageController
 	    	  fundCateogryList.put(category.getId(), category.getFundname());
 	      }
 	      return fundCateogryList;
+     }
+	 
+	 @ModelAttribute("fundschemelist")
+     public Map<String, String> getFundSchemeList() {
+	      Map<String, String> fundSchemeMap = new HashMap<String, String>();
+	      List<FundScheme> fundSchemeList = fundSchemeDAO.fundSchemeList();
+	      Iterator<FundScheme> iterator = fundSchemeList.listIterator();
+	      while(iterator.hasNext()) {
+	    	  FundScheme category = iterator.next();
+	    	  fundSchemeMap.put(category.getFundSchemeName(), category.getFundSchemeName());
+	      }
+	      return fundSchemeMap;
+     }
+	 
+	 @ModelAttribute("customerlist")
+     public Map<String, String> getCusomterList() {
+	      Map<String, String> cusomterMap = new HashMap<String, String>();
+	      List<CustomerDetails> cusomterList = customerDetailsDAO.customerList();
+	      Iterator<CustomerDetails> iterator = cusomterList.listIterator();
+	      while(iterator.hasNext()) {
+	    	  CustomerDetails cusomter = iterator.next();
+	    	  cusomterMap.put(cusomter.getCustomerName(), cusomter.getCustomerName());
+	      }
+	      return cusomterMap;
      }
 }

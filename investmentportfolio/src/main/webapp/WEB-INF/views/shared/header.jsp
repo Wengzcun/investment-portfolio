@@ -25,7 +25,7 @@
         </li>
         
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
-          <a class="nav-link" href="${contextRoot}/investmentportfolio/viewLifeInsurance">
+          <a class="nav-link" href="${contextRoot}/investmentportfolio/lifeinsurance">
             <i class="fa fa-fw fa-dashboard"></i>
             <span class="nav-link-text">Life Insurance</span>
           </a>
