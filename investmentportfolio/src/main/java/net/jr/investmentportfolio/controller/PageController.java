@@ -144,5 +144,4 @@ public class PageController
 	      }
 	      return fundCateogryList;
      }
-	
 }

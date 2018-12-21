@@ -33,3 +33,18 @@ CREATE TABLE fundscheme (
 
 ALTER TABLE fundscheme
 ADD is_active BOOLEAN;
+
+CREATE TABLE lifeinsurance (
+    id IDENTITY,
+    policydate varchar(255),
+    amount int,
+    policyperiod int,
+    schemename varchar(255),
+    policynumber varchar(255),
+    sumassured int,
+	policylastdate varchar(255),    
+	customername varchar(255),
+	is_active BOOLEAN,
+	
+    CONSTRAINT pk_lifeinsurance_id PRIMARY KEY(id)
+);

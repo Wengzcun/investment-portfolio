@@ -63,6 +63,16 @@
 			<%@include file="addFundScheme.jsp" %>
 		</c:if>
 		
+		<!-- Load Add Life Insurance -->
+		<c:if test="${userClickLifeInsurance == true}">
+			<%@include file="lifeInsurance.jsp" %>
+		</c:if>
+		
+		<!-- Load Add Life INsurance Add Form -->
+		<c:if test="${userClickAddLifeInsurance == true}">
+			<%@include file="addLifeInsurance.jsp" %>
+		</c:if>
+		
 		
 		<!-- Load Dashboard End -->
 	<!-- Content End -->    
