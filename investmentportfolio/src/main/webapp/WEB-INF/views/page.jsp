@@ -73,6 +73,13 @@
 			<%@include file="addLifeInsurance.jsp" %>
 		</c:if>
 		
+		<c:if test="${userClickFixedDeposite == true}">
+			<%@include file="fixedDeposite.jsp" %>
+		</c:if>
+		
+		<c:if test="${userClickAddFixedDeposite == true}">
+			<%@include file="addFixedDeposite.jsp" %>
+		</c:if>
 		
 		<!-- Load Dashboard End -->
 	<!-- Content End -->    
@@ -103,6 +110,102 @@
     <script src="${js}/sb-admin-charts.min.js"></script>
     <script src="${js}/validate.js"></script>
 
+
+	<script>
+	
+	function selectBank(){
+		var bankName = $("#policyBankName").val();
+		var periodSelected = $("#policyPeriod").val();
+		var interestRate = 0;
+		var policyAmountVal = $("#policyAmountId").val();
+		$("#interstRateId").val("");
+		if(bankName == "Mahindra and Mahindra Financial Services Ltd"){
+			if(periodSelected == "1"){
+				interestRate = 8.0;
+			}else if(periodSelected == "2"){
+				interestRate = 8.25;
+			}else if(periodSelected == "3"){
+				interestRate = 8.55;
+			}
+		}else if(bankName == "Shriram City Union Finance Limited"){
+			if(periodSelected == "1"){
+				interestRate = 7.50;
+			}else if(periodSelected == "2"){
+				interestRate = 7.75;
+			}else if(periodSelected == "3"){
+				interestRate = 8.0;
+			}
+		}else if(bankName == "National Housing Bank"){
+			if(periodSelected == "1"){
+				interestRate = 8.50;
+			}else if(periodSelected == "2"){
+				interestRate = 8.75;
+			}else if(periodSelected == "3"){
+				interestRate = 9.0;
+			}	
+		}else if(bankName == "SHRIRAM TRANSPORT FINANCE CO.LTD"){
+			if(periodSelected == "1"){
+				interestRate = 7.0;
+			}else if(periodSelected == "2"){
+				interestRate = 7.75;
+			}else if(periodSelected == "3"){
+				interestRate = 8.0;
+			}
+		}else if(bankName == "DHFL LTD"){
+			if(periodSelected == "1"){
+				interestRate = 8.55;
+			}else if(periodSelected == "2"){
+				interestRate = 8.75;
+			}else if(periodSelected == "3"){
+				interestRate = 0.0;
+			}			
+		}else if(bankName == "DHFL SWAYAMSIDHA FOR WOMEN"){
+			if(periodSelected == "1"){
+				interestRate = 7.55;
+			}else if(periodSelected == "2"){
+				interestRate = 7.75;
+			}else if(periodSelected == "3"){
+				interestRate = 7.85;
+			}	
+		}else if(bankName == "HDFC LIMITED"){
+			if(periodSelected == "1"){
+				interestRate = 8.15;
+			}else if(periodSelected == "2"){
+				interestRate = 8.25;
+			}else if(periodSelected == "3"){
+				interestRate = 8.45;
+			}	
+		}else if(bankName == "HUDCO Limited"){
+			if(periodSelected == "1"){
+				interestRate = 7.55;
+			}else if(periodSelected == "2"){
+				interestRate = 7.85;
+			}else if(periodSelected == "3"){
+				interestRate = 8.25;			
+			}	
+		}else if(bankName == "PNB HOUSING FINANCE LTD"){
+			if(periodSelected == "1"){
+				interestRate = 7.15;
+			}else if(periodSelected == "2"){
+				interestRate = 7.25;
+			}else if(periodSelected == "3"){
+				interestRate = 7.45;
+			}	
+		}
+		if((periodSelected == "NONE" || bankName == "NONE") || policyAmountVal == ""){
+			if(policyAmountVal == "NONE"){
+				alert("Please Enter Policy Amount");
+			}else if(periodSelected == "NONE"){
+				alert("Please Select Policy Period");
+			}else if(bankName == "NONE"){
+				alert("Please Select Bank");
+			}		
+		}else{
+			$("#interstRateId").val(interestRate);
+		}	
+
+	}
+	</script>
 </body>
 
 </html>

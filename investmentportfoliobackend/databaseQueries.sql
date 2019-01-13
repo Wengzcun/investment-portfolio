@@ -48,3 +48,18 @@ CREATE TABLE lifeinsurance (
 	
     CONSTRAINT pk_lifeinsurance_id PRIMARY KEY(id)
 );
+
+CREATE TABLE fixedeposite (
+    id IDENTITY,
+    policydate varchar(255),
+    amount int,
+    policyperiod int,
+    bankname varchar(255),
+    policynumber varchar(255),
+    sumassured int,
+	policylastdate varchar(255),    
+	customername varchar(255),
+	is_active BOOLEAN,
+	
+    CONSTRAINT pk_fixedeposite_id PRIMARY KEY(id)
+);

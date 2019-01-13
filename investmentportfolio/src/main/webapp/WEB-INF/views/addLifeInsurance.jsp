@@ -22,7 +22,21 @@
 							  </div>
 							  <div class="form-group">
 							    <label for="Name">Policy Period:</label>
-							    <sf:input type="number" path="policyperiod" id="name" class="form-control"></sf:input>
+							     <sf:select path = "policyperiod" class="form-control">
+				                     <sf:option value ="NONE" label = "Select Period"/>
+				                     <sf:option value ="1" >January</sf:option>
+				                     <sf:option value ="2" >February</sf:option>
+				                     <sf:option value ="3" >March</sf:option>
+				                     <sf:option value ="4" >April</sf:option>
+				                     <sf:option value ="5" >May</sf:option>
+				                     <sf:option value ="6" >June</sf:option>
+				                     <sf:option value ="7" >July</sf:option>
+				                     <sf:option value ="8" >August</sf:option>
+				                     <sf:option value ="9" >September</sf:option>
+				                     <sf:option value ="10" >October</sf:option>
+				                     <sf:option value ="11" >November</sf:option>
+				                     <sf:option value ="12" >December</sf:option>
+				                 </sf:select>
 							  </div>
 							  <div class="form-group">
 							    <label for="Name">Policy Scheme name:</label>

@@ -30,7 +30,12 @@
             <span class="nav-link-text">Life Insurance</span>
           </a>
         </li>
-        
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+          <a class="nav-link" href="${contextRoot}/investmentportfolio/fixeddeposite">
+            <i class="fa fa-fw fa-dashboard"></i>
+            <span class="nav-link-text">Fixed Deposit</span>
+          </a>
+        </li>
    <!-- <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
           <a class="nav-link" href="charts.html">
             <i class="fa fa-fw fa-area-chart"></i>
