@@ -54,6 +54,8 @@ public class FixedDeposite {
 	public void setAmount(Integer amount) {
 		this.amount = amount;
 	}
+
+	
 	public Integer getPolicyperiod() {
 		return policyperiod;
 	}

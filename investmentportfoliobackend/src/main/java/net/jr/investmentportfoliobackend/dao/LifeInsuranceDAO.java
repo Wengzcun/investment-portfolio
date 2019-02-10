@@ -7,5 +7,5 @@ import net.jr.investmentportfoliobackend.dto.LifeInsurance;
 public interface LifeInsuranceDAO {
 	LifeInsurance get(int id);
 	List<LifeInsurance> lifeInsuranceList();
-	boolean add(LifeInsurance lifeInsuracne) ;
+	boolean add(LifeInsurance lifeInsurance) ;
 }

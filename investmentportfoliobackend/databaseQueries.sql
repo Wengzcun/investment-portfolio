@@ -1,4 +1,11 @@
 
+CREATE TABLE logindetails (
+    id IDENTITY,
+    username varchar(255),
+    userpwd varchar(255),
+    CONSTRAINT pk_logindetails_id PRIMARY KEY(id)
+);
+
 
 CREATE TABLE customerdetails (
     id IDENTITY,

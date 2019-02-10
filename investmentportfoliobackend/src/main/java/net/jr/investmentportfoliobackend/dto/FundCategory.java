@@ -28,6 +28,8 @@ public class FundCategory {
 	public void setId(Integer id) {
 		this.id = id;
 	}
+	
+	
 	public String getFundname() {
 		return fundname;
 	}

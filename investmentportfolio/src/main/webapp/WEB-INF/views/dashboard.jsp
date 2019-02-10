@@ -6,8 +6,8 @@
         </li>
         <li class="breadcrumb-item active">My Dashboard</li>
       </ol>
-      <div class="row">
-        <!-- <div class="col-xl-3 col-sm-6 mb-3">
+      <!-- <div class="row">
+        <div class="col-xl-3 col-sm-6 mb-3">
           <div class="card text-white bg-primary o-hidden h-100">
             <div class="card-body">
               <div class="card-body-icon">
@@ -114,8 +114,8 @@
             </div>
             <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
           </div>
-        </div> --> 
-      </div> 
+        </div> 
+      </div> -->
       <!-- Example DataTables Card-->
       <div class="card mb-3">
         <div class="card-header">
@@ -138,7 +138,7 @@
               <tbody>
                	<c:forEach items="${customers}" var = "customer">
 	                <tr>
-	                  <th>Edit|Delete</th>
+	                  <th><a href="${contextRoot}/investmentportfolio/editcustomer/${customer.customerID}">Edit</a>|Delete</th>
 	                  <th>${customer.customerName}</th>
 	                  <th>${customer.customerEmail}</th>
 	                  <th>${customer.customerPhone}</th>

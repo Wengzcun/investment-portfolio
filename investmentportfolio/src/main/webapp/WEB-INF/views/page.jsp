@@ -29,55 +29,75 @@
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
  	<!-- Footer Start -->
-		<%@include file="./shared/header.jsp" %>
+		
 	<!-- Footer End -->
 	
 	<!-- Content Start  -->
 		
 		<!-- Load Add Customer Start -->
-		<c:if test="${userClickAdd == true}">
-			<%@include file="addCustomer.jsp" %>
+		<c:if test="${userClickLogin == true}">
+			<%@include file="login.jsp" %>
 		</c:if>
 		
 		<!-- Load Dashboard Start -->
 		<c:if test="${userClickDashboard == true}">
+		<%@include file="./shared/header.jsp" %>
 			<%@include file="dashboard.jsp" %>
 		</c:if>
 		
+		<c:if test="${userClickAdd == true}">
+		<%@include file="./shared/header.jsp" %>
+			<%@include file="addCustomer.jsp" %>
+			
+		</c:if>
+		
+		<c:if test="${userClickEditCustomer == true}">
+		<%@include file="./shared/header.jsp" %>
+			<%@include file="editCustomer.jsp" %>
+		</c:if>
+				
 		<!-- Load Dashboard Start -->
 		<c:if test="${userClickFundCategory == true}">
+		<%@include file="./shared/header.jsp" %>
 			<%@include file="fundCategory.jsp" %>
 		</c:if>
 		<!-- Load Add FUnd Category Form -->
 		<c:if test="${userClickAddFundCatgory == true}">
+		<%@include file="./shared/header.jsp" %>
 			<%@include file="addFundCategory.jsp" %>
 		</c:if>
 		
 		<!-- Load Add FUnd Category Form -->
 		<c:if test="${userClickFundScheme == true}">
+		<%@include file="./shared/header.jsp" %>
 			<%@include file="fundScheme.jsp" %>
 		</c:if>
 		
 		<!-- Load Add FUnd Category Form -->
 		<c:if test="${userClickAddFundScheme == true}">
+		<%@include file="./shared/header.jsp" %>
 			<%@include file="addFundScheme.jsp" %>
 		</c:if>
 		
 		<!-- Load Add Life Insurance -->
 		<c:if test="${userClickLifeInsurance == true}">
+		<%@include file="./shared/header.jsp" %>
 			<%@include file="lifeInsurance.jsp" %>
 		</c:if>
 		
 		<!-- Load Add Life INsurance Add Form -->
 		<c:if test="${userClickAddLifeInsuracne == true}">
+		<%@include file="./shared/header.jsp" %>
 			<%@include file="addLifeInsurance.jsp" %>
 		</c:if>
 		
 		<c:if test="${userClickFixedDeposite == true}">
+		<%@include file="./shared/header.jsp" %>
 			<%@include file="fixedDeposite.jsp" %>
 		</c:if>
 		
 		<c:if test="${userClickAddFixedDeposite == true}">
+		<%@include file="./shared/header.jsp" %>
 			<%@include file="addFixedDeposite.jsp" %>
 		</c:if>
 		
@@ -104,10 +124,10 @@
     <script src="${vendor}/datatables/jquery.dataTables.js"></script>
     <script src="${vendor}/datatables/dataTables.bootstrap4.js"></script>
     <!-- Custom scripts for all pages-->
-    <script src="${js}/sb-admin.min.js"></script>
+    <script src="${js}/sb-admin.js"></script>
     <!-- Custom scripts for this page-->
-    <script src="${js}/sb-admin-datatables.min.js"></script>
-    <script src="${js}/sb-admin-charts.min.js"></script>
+    <script src="${js}/sb-admin-datatables.js"></script>
+    <script src="${js}/sb-admin-charts.js"></script>
     <script src="${js}/validate.js"></script>
 
 
@@ -202,9 +222,177 @@
 			}		
 		}else{
 			$("#interstRateId").val(interestRate);
+			var sumAssuredAmt = Math.round(policyAmountVal * Math.pow((1+(interestRate/(12*periodSelected*100))),periodSelected*12));
+			$("#policySumAssured").val(sumAssuredAmt);
 		}	
 
 	}
+	
+	
+	function validateCusomterForm() {
+		
+		  var name = document.forms["addCusomterForm"]["name"].value;
+		  var email = document.forms["addCusomterForm"]["email"].value;
+		  var phone = document.forms["addCusomterForm"]["phone"].value;
+		  var panNo = document.forms["addCusomterForm"]["pan"].value;
+		  var password = document.forms["addCusomterForm"]["password"].value;
+		  
+		  var regpan = /^([a-zA-Z]){5}([0-9]){4}([a-zA-Z]){1}?$/;
+		  var regEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+		  var regName = /^[A-z ]+$/;
+		  var regPhone = /^[0]?[789]\d{9}$/;
+		  
+		  if(name == "" || !regName.test(name)){
+			  alert("Plaese Enter Valid Customer Name");
+			  return false;			  
+		  }
+		  else if(email == "" || !regEmail.test(email)){
+			  alert("Plaese Enter Valid Email");
+			  return false;
+		  }
+		  else if(phone == "" || !regPhone.test(phone)){
+			  alert("Plaese Enter Valid Phone Number");
+			  return false;			  
+		  }
+		  else if (panNo == "" || !regpan.test(panNo)) {
+		    alert("Plaese Enter Valid Pan No");
+		    return false;
+		  }
+		  else if(password == "" || password.length <= 8){
+			  alert("Plaese Enter Password greater than or equal to 8");
+			  return false;			  
+		  }
+		}
+	
+	
+		function changePolicyAmount(){
+			var totamount=0;
+			
+			var p1= document.getElementById("amount").value;
+			var p= parseFloat(p1);
+			
+			var y= parseFloat(getCheckedValue("year"));
+			
+			var t=getCheckedValue("t")
+			if(p == "")
+			{
+				alert("enter the amount,interstand year");
+			}
+
+			else
+			{
+			if(t=="Yearly")
+			{
+			totamount=(y*p)+(y*500*41);
+			}
+			else
+			{
+			totamount=(p*12*y)+(y*500*41);
+			}
+			}
+			
+			document.getElementById("sumassured").value=totamount;
+		}
+	
+		function validateLifeInsurance(){
+		   var cusotmername = document.forms["lifeinsurance"]["customername"].value;
+		   var cusomteryear = document.forms["lifeinsurance"]["year"].value;
+		   var policyscheme = document.forms["lifeinsurance"]["schemename"].value;
+		   var policyNumber  = document.forms["lifeinsurance"]["policynumber"].value;
+		   var sumAssured  = document.forms["lifeinsurance"]["sumassured"].value;
+		   var policyStartDate = document.forms["lifeinsurance"]["policydate"].value;
+		   var policyLastDate = document.forms["lifeinsurance"]["policydate"].value;
+		   if(cusotmername == "NONE"){
+			   alert("Plaese Select Valid Customer Name");
+			   return false;			  
+		   }else if(cusomteryear == "NONE"){
+			   alert("Please Select Valid cusomterYear")
+			   return false;
+		   }else if(policyscheme == "NONE"){
+			   alert("Please Select Policy Scheme")
+			   return false;
+		   }else if(policyNumber == ""){
+			   alert("Please Enter Policy Number")
+			   return false;
+		   }else if(sumAssured == ""){
+			   alert("Please Enter Payable Amount")
+			   return false;
+		   }else if(policyStartDate == ""){
+			   alert("Please Input Policy Date")
+			   return false;
+		   }else if(policyStartDate == ""){
+			   alert("Please Input Policy Date");
+			   return false;
+		   }else if(policyLastDate == ""){
+			   alert("Please Input Policy Last Date")
+			   return false;
+		   }
+		}
+		
+		function getCheckedValue( groupName ) {
+			var radios = document.getElementsByName( groupName );
+			for( i = 0; i < radios.length; i++ ) {
+			if( radios[i].checked ) {
+			return radios[i].value;
+			}
+			}
+			return null;
+		}
+		
+		function validateFixedDeposit(){
+			   var cusotmername = document.forms["fixeddeposit"]["customername"].value;
+			   var policydate = document.forms["fixeddeposit"]["policydate"].value;
+			   var policyamount = document.forms["fixeddeposit"]["amount"].value;
+			   var policyperiod = document.forms["fixeddeposit"]["policyperiod"].value;
+			   var bankname = document.forms["fixeddeposit"]["bankname"].value;policynumber
+			   var policynumber = document.forms["fixeddeposit"]["policynumber"].value;
+			   var policyassured = document.forms["fixeddeposit"]["sumassured"].value;
+			   var policylastdate = document.forms["fixeddeposit"]["policylastdate"].value;
+			   
+			   if(cusotmername == "NONE"){
+				   alert("Plaese Select Valid Customer Name");
+				   return false;			  
+			   }else if(policydate == ""){
+				   alert("Please Input Policy Date")
+				   return false;
+			   }else if(policyamount == ""){
+				   alert("Please Enter Policy Amount")
+				   return false;
+			   }else if(policyperiod == "NONE"){
+				   alert("Please Select Policy Period")
+				   return false;
+			   }else if(bankname == "NONE"){
+				   alert("Please select Bank Name")
+				   return false;
+			   }else if(policynumber == ""){
+				   alert("Please Enter Policy Number")
+				   return false;
+			   }else if(policyassured == ""){
+				   alert("Please Enter Sum Assured")
+				   return false;
+			   }else if(policylastdate == ""){
+				   alert("Please Enter Policy Date")
+				   return false;
+			   }
+		}
+		
+		function validateLoginDetails(){
+			var userName = $("#userName").val();
+			var userPassword = $("#userPassword").val();
+			if(userName == ""){
+				alert("Please Enter User Name");
+				return false;
+			}else if(userPassword == ""){
+				alert("Please Enter Password");
+				return false;
+			}else if(userName != "admin"){
+				alert("UserName is Incorrect");
+				return false;
+			}else if(userPassword != "admin123"){
+				alert("Password is Incorrect");
+				return false;
+			}
+		}
 	</script>
 </body>
 

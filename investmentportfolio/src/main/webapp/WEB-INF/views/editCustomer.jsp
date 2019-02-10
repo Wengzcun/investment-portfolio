@@ -4,13 +4,13 @@
 	    <div class="container-fluid">
 	    <ol class="breadcrumb">
 	        <li class="breadcrumb-item">
-	          <a href="#">Dashboard</a>
+	          <a href="#">Edit</a>
 	        </li>
-	        <li class="breadcrumb-item active">Add Customer Record</li>
+	        <li class="breadcrumb-item active">Edit Customer Record</li>
 	     </ol>
 	     <div class="panel panel-default">
 			    <div class="panel-body">
-			    	<sf:form class="form-horizontal" modelAttribute="addDetails" name = "addCusomterForm" action="${contextRoot}/investmentportfolio/submitCusomter" onsubmit="return validateCusomterForm()" method="POST">
+			    	<sf:form class="form-horizontal" modelAttribute="editCustomerDetails" name = "editCusomterForm" action="${contextRoot}/investmentportfolio/submitCusomter" onsubmit="return validateCusomterForm()" method="POST">
 				          	  <div class="form-group">
 							    <label for="Name">Name:</label>
 							    <sf:input type="text" path="customerName" id="name" name = "name" class="form-control"></sf:input>

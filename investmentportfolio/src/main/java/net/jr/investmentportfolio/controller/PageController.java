@@ -8,6 +8,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -16,10 +17,12 @@ import net.jr.investmentportfoliobackend.dao.CustomerDetailsDAO;
 import net.jr.investmentportfoliobackend.dao.FundCategoryDAO;
 import net.jr.investmentportfoliobackend.dao.FundSchemeDAO;
 import net.jr.investmentportfoliobackend.dao.LifeInsuranceDAO;
+import net.jr.investmentportfoliobackend.dao.LoginDetailsDAO;
 import net.jr.investmentportfoliobackend.dto.CustomerDetails;
 import net.jr.investmentportfoliobackend.dto.FundCategory;
 import net.jr.investmentportfoliobackend.dto.FundScheme;
 import net.jr.investmentportfoliobackend.dto.LifeInsurance;
+import net.jr.investmentportfoliobackend.dto.LoginDetails;
 
 @Controller
 public class PageController 
@@ -32,9 +35,38 @@ public class PageController
 	private FundSchemeDAO fundSchemeDAO;
 	@Autowired
 	private LifeInsuranceDAO LifeInsuranceDAO;
-	
+	@Autowired
+	private LoginDetailsDAO LoginDetailsDAO;
 	
 	@RequestMapping(value= {"/","/home","/index"})
+	public ModelAndView login()
+	{
+		ModelAndView mv = new ModelAndView("page");
+		mv.addObject("title", "Login");
+		
+		//Passing the list of customers
+		LoginDetails loginDetails = new LoginDetails();
+		mv.addObject("loginDetails" ,loginDetails);
+		//mv.addObject("customers", customerDetailsDAO.customerList());
+		
+		mv.addObject("userClickLogin", true);
+		return mv;
+	}
+	
+	@RequestMapping(value= {"/submitLogin"},method=RequestMethod.POST)
+	public String LoginDetails(@ModelAttribute("loginDetails") LoginDetails loginDetails)
+	{
+		List<LoginDetails> loginDetails2 = LoginDetailsDAO.get(loginDetails.getUserName(),loginDetails.getUserPassword());
+	
+		if(loginDetails2.isEmpty())
+			return "redirect:/index";
+		else {
+			return "redirect:/getCustomerDetails";
+		}
+
+	}
+	
+	@RequestMapping(value= {"/getCustomerDetails"})
 	public ModelAndView dashboard()
 	{
 		ModelAndView mv = new ModelAndView("page");
@@ -68,6 +100,21 @@ public class PageController
 
 	}
  
+	
+	@RequestMapping(value= {"/editcustomer/{id}"},method = RequestMethod.GET)
+	public ModelAndView editCustomer(@PathVariable Long id)
+	{
+
+		CustomerDetails customerDetails = new CustomerDetails();
+		ModelAndView mv = new ModelAndView("page");
+		mv.addObject("title", "Edit Customer");
+		
+		mv.addObject("userClickEditCustomer", true);
+		mv.addObject("editCustomerDetails" ,customerDetails);
+		return mv;
+
+	}
+	
 	//Fund Category
 	@RequestMapping(value= {"/fundcategory"})
 	public ModelAndView fundCategoryView()
