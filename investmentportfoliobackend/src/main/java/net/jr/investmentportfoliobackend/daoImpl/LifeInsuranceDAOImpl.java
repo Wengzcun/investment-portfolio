@@ -1,6 +1,7 @@
 package net.jr.investmentportfoliobackend.daoImpl;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.hibernate.SessionFactory;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import net.jr.investmentportfoliobackend.dao.LifeInsuranceDAO;
+import net.jr.investmentportfoliobackend.dto.CustomerDetails;
 import net.jr.investmentportfoliobackend.dto.LifeInsurance;
 
 @Repository("LifeInsuranceDAO")
@@ -62,4 +64,21 @@ public class LifeInsuranceDAOImpl implements LifeInsuranceDAO{
 			return false;
 		}
 	}
+	
+	/**
+	 * Update Single Record
+	 */
+	@Override
+	public boolean update(LifeInsurance lifeInsurance) {
+		try {
+			sessionFactory.getCurrentSession().update(lifeInsurance);
+			return true;			
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e);
+			e.printStackTrace();
+			return false;
+		}
+	}
+
 }

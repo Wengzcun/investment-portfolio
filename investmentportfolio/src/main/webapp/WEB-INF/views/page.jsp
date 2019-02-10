@@ -28,76 +28,73 @@
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
- 	<!-- Footer Start -->
+ 	<!-- Content Start  -->
 		
-	<!-- Footer End -->
-	
-	<!-- Content Start  -->
-		
-		<!-- Load Add Customer Start -->
 		<c:if test="${userClickLogin == true}">
 			<%@include file="login.jsp" %>
 		</c:if>
 		
 		<!-- Load Dashboard Start -->
 		<c:if test="${userClickDashboard == true}">
-		<%@include file="./shared/header.jsp" %>
+			<%@include file="./shared/header.jsp" %>
 			<%@include file="dashboard.jsp" %>
 		</c:if>
+		<!-- Load Dashboard End -->
 		
+		<!-- Load Click Start Start -->
 		<c:if test="${userClickAdd == true}">
-		<%@include file="./shared/header.jsp" %>
+			<%@include file="./shared/header.jsp" %>
 			<%@include file="addCustomer.jsp" %>
-			
 		</c:if>
+		<!-- Load Add Customer End -->
 		
 		<c:if test="${userClickEditCustomer == true}">
-		<%@include file="./shared/header.jsp" %>
+			<%@include file="./shared/header.jsp" %>
 			<%@include file="editCustomer.jsp" %>
 		</c:if>
 				
 		<!-- Load Dashboard Start -->
 		<c:if test="${userClickFundCategory == true}">
-		<%@include file="./shared/header.jsp" %>
+			<%@include file="./shared/header.jsp" %>
 			<%@include file="fundCategory.jsp" %>
 		</c:if>
 		<!-- Load Add FUnd Category Form -->
 		<c:if test="${userClickAddFundCatgory == true}">
-		<%@include file="./shared/header.jsp" %>
+			<%@include file="./shared/header.jsp" %>
 			<%@include file="addFundCategory.jsp" %>
 		</c:if>
 		
 		<!-- Load Add FUnd Category Form -->
 		<c:if test="${userClickFundScheme == true}">
-		<%@include file="./shared/header.jsp" %>
+			<%@include file="./shared/header.jsp" %>
 			<%@include file="fundScheme.jsp" %>
 		</c:if>
 		
 		<!-- Load Add FUnd Category Form -->
 		<c:if test="${userClickAddFundScheme == true}">
-		<%@include file="./shared/header.jsp" %>
+			<%@include file="./shared/header.jsp" %>
 			<%@include file="addFundScheme.jsp" %>
 		</c:if>
 		
 		<!-- Load Add Life Insurance -->
 		<c:if test="${userClickLifeInsurance == true}">
-		<%@include file="./shared/header.jsp" %>
+			<%@include file="./shared/header.jsp" %>
 			<%@include file="lifeInsurance.jsp" %>
 		</c:if>
 		
 		<!-- Load Add Life INsurance Add Form -->
 		<c:if test="${userClickAddLifeInsuracne == true}">
-		<%@include file="./shared/header.jsp" %>
+			<%@include file="./shared/header.jsp" %>
 			<%@include file="addLifeInsurance.jsp" %>
 		</c:if>
 		
 		<c:if test="${userClickFixedDeposite == true}">
-		<%@include file="./shared/header.jsp" %>
+			<%@include file="./shared/header.jsp" %>
 			<%@include file="fixedDeposite.jsp" %>
 		</c:if>
 		
 		<c:if test="${userClickAddFixedDeposite == true}">
-		<%@include file="./shared/header.jsp" %>
+			<%@include file="./shared/header.jsp" %>
 			<%@include file="addFixedDeposite.jsp" %>
 		</c:if>
 		

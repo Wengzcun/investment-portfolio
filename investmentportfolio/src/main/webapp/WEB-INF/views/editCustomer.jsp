@@ -3,14 +3,14 @@
     <div class="content-wrapper">
 	    <div class="container-fluid">
 	    <ol class="breadcrumb">
-	        <li class="breadcrumb-item">
-	          <a href="#">Edit</a>
-	        </li>
+	        <li class="breadcrumb-item"><a href="#">Edit</a></li>
 	        <li class="breadcrumb-item active">Edit Customer Record</li>
 	     </ol>
 	     <div class="panel panel-default">
 			    <div class="panel-body">
-			    	<sf:form class="form-horizontal" modelAttribute="editCustomerDetails" name = "editCusomterForm" action="${contextRoot}/investmentportfolio/submitCusomter" onsubmit="return validateCusomterForm()" method="POST">
+			    	<sf:form class="form-horizontal" modelAttribute="editCustomerDetails" action="${contextRoot}/investmentportfolio/updateCusomter" onsubmit="return validateCusomterForm()" method="POST">
+				          	  <sf:input type="hidden" path="customerID"></sf:input>
+				          	  
 				          	  <div class="form-group">
 							    <label for="Name">Name:</label>
 							    <sf:input type="text" path="customerName" id="name" name = "name" class="form-control"></sf:input>
@@ -33,7 +33,7 @@
 							    <sf:input type="password" path="customerPWD" id="password" name = "password" class="form-control"></sf:input>
 							  </div>
 							  <div class="panel-footer">
-								  <a class="btn btn-secondary"  href="${contextRoot}/investmentportfolio/index">Cancel</a>
+								  <a class="btn btn-secondary"  href="${contextRoot}/investmentportfolio/getCustomerDetails">Cancel</a>
 					              <input type="submit" name="submit" id="submit" value="submit" class="btn btn-primary">
 							  </div>
 				              

@@ -138,7 +138,7 @@
               <tbody>
                	<c:forEach items="${customers}" var = "customer">
 	                <tr>
-	                  <th><a href="${contextRoot}/investmentportfolio/editcustomer/${customer.customerID}">Edit</a>|Delete</th>
+	                  <th><a href="${contextRoot}/investmentportfolio/editcustomer?id=${customer.customerID}">Edit</a>|<a href="${contextRoot}/investmentportfolio/deleteCustomer?id=${customer.customerID}">Delete</a></th>
 	                  <th>${customer.customerName}</th>
 	                  <th>${customer.customerEmail}</th>
 	                  <th>${customer.customerPhone}</th>

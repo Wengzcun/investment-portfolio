@@ -18,7 +18,11 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import net.jr.investmentportfoliobackend.dao.CustomerDetailsDAO;
+import net.jr.investmentportfoliobackend.dao.LifeInsuranceDAO;
 import net.jr.investmentportfoliobackend.dto.CustomerDetails;
+import net.jr.investmentportfoliobackend.dto.FundCategory;
+import net.jr.investmentportfoliobackend.dto.FundScheme;
+import net.jr.investmentportfoliobackend.dto.LifeInsurance;
 
 @Repository("customerDetailsDAO")
 @Transactional
@@ -88,6 +92,21 @@ public class CustomerDetailsDAOImpl implements CustomerDetailsDAO {
 	public boolean update(CustomerDetails customerDetails) {
 		try {
 			sessionFactory.getCurrentSession().update(customerDetails);
+			
+			/*List<LifeInsurance> lifeInsuracneList = new ArrayList<>();
+			
+			String selectActiveQuery = "from LifeInsurance where customername = :customername";
+			Query query = sessionFactory.getCurrentSession().createQuery(selectActiveQuery);
+			query.setParameter("customername", customerDetails.getCustomerName());
+			lifeInsuracneList = query.getResultList();
+			Iterator<LifeInsurance> it = lifeInsuracneList.iterator();
+			while (it.hasNext()) {
+				LifeInsurance lifeInsurance = (LifeInsurance) it.next();
+				lifeInsurance.setCustomername(customerDetails.getCustomerName());
+				LifeInsuranceDAOImpl insuranceDAOImpl  = new LifeInsuranceDAOImpl();
+				insuranceDAOImpl.update(lifeInsurance);
+			}
+			*/
 			return true;			
 		} catch (Exception e) {
 			// TODO: handle exception

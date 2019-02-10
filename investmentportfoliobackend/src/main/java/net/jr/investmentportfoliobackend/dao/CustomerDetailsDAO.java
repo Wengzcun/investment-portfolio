@@ -9,8 +9,8 @@ public interface CustomerDetailsDAO {
 	CustomerDetails get(int id);
 	List<CustomerDetails> customerList();
 	boolean add(CustomerDetails customerDetails) ;
-	boolean update(CustomerDetails customerDetails) ;
 	boolean delete(CustomerDetails customerDetails) ;
+	boolean update(CustomerDetails customerDetails);
 
 
 }

@@ -8,9 +8,9 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import net.jr.investmentportfoliobackend.dao.CustomerDetailsDAO;
@@ -92,27 +92,43 @@ public class PageController
 
 	}
 	
-	@RequestMapping(value= {"/submitCusomter"},method=RequestMethod.POST)
+	@RequestMapping(value= {"/submitCusomter"},method = RequestMethod.POST)
 	public String addCusomter(@ModelAttribute("addDetails") CustomerDetails customerDetails)
 	{
 		customerDetailsDAO.add(customerDetails);
-		return "redirect:/index";
-
+		return "redirect:/getCustomerDetails";
 	}
  
-	
-	@RequestMapping(value= {"/editcustomer/{id}"},method = RequestMethod.GET)
-	public ModelAndView editCustomer(@PathVariable Long id)
+	//Get Require By Id for edit
+	@RequestMapping(value= "/editcustomer")
+	public ModelAndView editCustomer(@RequestParam(value="id" , required = true) int id)
 	{
-
 		CustomerDetails customerDetails = new CustomerDetails();
+		customerDetails = customerDetailsDAO.get(id);
 		ModelAndView mv = new ModelAndView("page");
-		mv.addObject("title", "Edit Customer");
-		
 		mv.addObject("userClickEditCustomer", true);
+		mv.addObject("title", "Edit Customer");
+
 		mv.addObject("editCustomerDetails" ,customerDetails);
 		return mv;
-
+	}
+	
+	//Update Record  
+	@RequestMapping(value= "/updateCusomter",method = RequestMethod.POST)
+	public String updateCustomer(@ModelAttribute("editCustomerDetails") CustomerDetails customerDetails)
+	{
+		customerDetailsDAO.update(customerDetails);
+		return "redirect:/getCustomerDetails";
+	}
+	
+	//Edit 
+	@RequestMapping(value= "/deleteCustomer")
+	public String deleteCustomer(@RequestParam(value="id" , required = true) int id)
+	{
+		CustomerDetails customerDetails = new CustomerDetails();
+		customerDetails.setCustomerID(id);
+		customerDetailsDAO.delete(customerDetails);
+		return "redirect:/getCustomerDetails";
 	}
 	
 	//Fund Category

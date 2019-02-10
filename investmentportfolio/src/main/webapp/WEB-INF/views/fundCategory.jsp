@@ -17,14 +17,14 @@
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
               <thead>
                 <tr>
-                  <th>Action</th>
+<!--                   <th>Action</th> -->
                   <th>Name</th>
                 </tr>
               </thead>
               <tbody>
                	<c:forEach items="${fundcategory}" var= "fundcategory">
 	                <tr>
-	                  <th>Edit|Delete</th>
+	                <!-- <th>Edit|Delete</th> -->  
 	                  <th>${fundcategory.fundname}</th>
 	                </tr>
               	</c:forEach>

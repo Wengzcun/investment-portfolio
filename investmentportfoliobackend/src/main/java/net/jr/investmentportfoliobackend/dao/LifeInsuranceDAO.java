@@ -8,4 +8,5 @@ public interface LifeInsuranceDAO {
 	LifeInsurance get(int id);
 	List<LifeInsurance> lifeInsuranceList();
 	boolean add(LifeInsurance lifeInsurance) ;
+	boolean update(LifeInsurance lifeInsurance);
 }
