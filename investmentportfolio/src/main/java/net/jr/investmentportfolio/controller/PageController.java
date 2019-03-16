@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import net.jr.investmentportfoliobackend.dao.CustomerDetailsDAO;
@@ -73,7 +74,7 @@ public class PageController
 		mv.addObject("title", "Dashboard");
 		
 		//Passing the list of customers
-		mv.addObject("customers", customerDetailsDAO.customerList());
+		mv.addObject("customers", customerDetailsDAO.getAllCustomerDetails());
 		
 		mv.addObject("userClickDashboard", true);
 		return mv;
@@ -105,6 +106,7 @@ public class PageController
 	{
 		CustomerDetails customerDetails = new CustomerDetails();
 		customerDetails = customerDetailsDAO.get(id);
+		
 		ModelAndView mv = new ModelAndView("page");
 		mv.addObject("userClickEditCustomer", true);
 		mv.addObject("title", "Edit Customer");
@@ -121,7 +123,7 @@ public class PageController
 		return "redirect:/getCustomerDetails";
 	}
 	
-	//Edit 
+	//Delete 
 	@RequestMapping(value= "/deleteCustomer")
 	public String deleteCustomer(@RequestParam(value="id" , required = true) int id)
 	{
@@ -129,6 +131,15 @@ public class PageController
 		customerDetails.setCustomerID(id);
 		customerDetailsDAO.delete(customerDetails);
 		return "redirect:/getCustomerDetails";
+	}
+	
+	//Test Ajax
+	@RequestMapping(value= "/getCustomerLifeInsurance")
+	public List<CustomerDetails> getCustomerAllLifeInsurance(){
+		
+		List<CustomerDetails> customerDetailsList = customerDetailsDAO.get();
+		return customerDetailsList;
+		
 	}
 	
 	//Fund Category
@@ -265,7 +276,7 @@ public class PageController
 	 @ModelAttribute("customerlist")
      public Map<String, String> getCusomterList() {
 	      Map<String, String> cusomterMap = new HashMap<String, String>();
-	      List<CustomerDetails> cusomterList = customerDetailsDAO.customerList();
+	      List<CustomerDetails> cusomterList = customerDetailsDAO.get();
 	      Iterator<CustomerDetails> iterator = cusomterList.listIterator();
 	      while(iterator.hasNext()) {
 	    	  CustomerDetails cusomter = iterator.next();

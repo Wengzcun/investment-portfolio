@@ -63,7 +63,7 @@ public class FixedDepositeController {
 	@ModelAttribute("customerlist")
     public Map<String, String> getCusomterList() {
 	      Map<String, String> cusomterMap = new HashMap<String, String>();
-	      List<CustomerDetails> cusomterList = customerDetailsDAO.customerList();
+	      List<CustomerDetails> cusomterList = customerDetailsDAO.get();
 	      Iterator<CustomerDetails> iterator = cusomterList.listIterator();
 	      while(iterator.hasNext()) {
 	    	  CustomerDetails cusomter = iterator.next();

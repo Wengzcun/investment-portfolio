@@ -132,7 +132,9 @@
                   <th>Email</th>
                   <th>Phone</th>
                   <th>PAN</th>
-                  <th>View</th>
+				  <th>Life Insurance</th>
+				   <th>Fixed Deposite</th>
+                 <!-- <th>View</th> --> 
                 </tr>
               </thead>
               <tbody>
@@ -143,7 +145,9 @@
 	                  <th>${customer.customerEmail}</th>
 	                  <th>${customer.customerPhone}</th>
 	                  <th>${customer.customerPAN}</th>
-	                  <th>View</th>
+	                  <th>${customer.isLifeInsurance}</th>
+	                  <th>${customer.isFixedDeposite}</th>
+	                <!-- <th>View</th> -->  
 	                </tr>
               	</c:forEach>
  

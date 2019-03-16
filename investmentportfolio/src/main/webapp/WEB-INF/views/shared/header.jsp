@@ -11,12 +11,12 @@
             <span class="nav-link-text">Dashboard</span>
           </a>
         </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+       <!--  <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
           <a class="nav-link" href="${contextRoot}/investmentportfolio/fundcategory">
             <i class="fa fa-fw fa-dashboard"></i>
             <span class="nav-link-text">Fund</span>
           </a>
-        </li>
+        </li> -->
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
           <a class="nav-link" href="${contextRoot}/investmentportfolio/fundscheme">
             <i class="fa fa-fw fa-dashboard"></i>

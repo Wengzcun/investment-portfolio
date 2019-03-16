@@ -101,7 +101,7 @@
 		<!-- Load Dashboard End -->
 	<!-- Content End -->    
     <!-- Footer Content Start-->
-    <%@include file="./shared/footer.jsp" %>
+
     <!-- Footer Content -->
     <!-- Scroll to Top Button Start -->
     <%@include file="./shared/scroll.jsp" %>
