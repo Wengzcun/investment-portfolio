@@ -58,7 +58,7 @@ public class CustomerDetailsTestCase {
 	*/
 	@Test
 	public void testSelectCustomerDetailsList() {
-		assertEquals("Fetch List of Cateogry added",1, customerDetailsDAO.customerList().size() );
+		assertEquals("Fetch List of Cateogry added",1, customerDetailsDAO.get().size() );
 	}
 
 }
