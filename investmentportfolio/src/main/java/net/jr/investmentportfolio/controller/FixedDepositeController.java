@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import net.jr.investmentportfoliobackend.dao.CustomerDetailsDAO;
@@ -71,6 +72,21 @@ public class FixedDepositeController {
 	      }
 	      return cusomterMap;
     }
+	
+	//Get Require By name for viewlifeinsurance
+	@RequestMapping(value= "/viewcustomerfixeddeposit")
+	public ModelAndView viewCusomterFixedDeposite(@RequestParam(value="name" , required = true) String name)
+	{
+		ModelAndView mv = new ModelAndView("page");
+		mv.addObject("title", "Fixed Deposit");
+		
+		//Passing the list of customers
+		mv.addObject("fixeddeposite", fixedDepositDAO.fixedDepositeCustomerWiseList(name));
+		
+		mv.addObject("userClickFixedDeposite", true);
+		return mv;
+	}
+	
 	
 	
 }

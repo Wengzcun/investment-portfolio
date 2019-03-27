@@ -1,13 +1,18 @@
 package net.jr.investmentportfolio.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,6 +25,7 @@ import net.jr.investmentportfoliobackend.dao.FundSchemeDAO;
 import net.jr.investmentportfoliobackend.dao.LifeInsuranceDAO;
 import net.jr.investmentportfoliobackend.dao.LoginDetailsDAO;
 import net.jr.investmentportfoliobackend.dto.CustomerDetails;
+import net.jr.investmentportfoliobackend.dto.CustomterAllDetails;
 import net.jr.investmentportfoliobackend.dto.FundCategory;
 import net.jr.investmentportfoliobackend.dto.FundScheme;
 import net.jr.investmentportfoliobackend.dto.LifeInsurance;
@@ -79,6 +85,35 @@ public class PageController
 		mv.addObject("userClickDashboard", true);
 		return mv;
 	}
+	
+	@RequestMapping(value= {"/getCalendarView"})
+	public ModelAndView calendarview()
+	{
+		ModelAndView mv = new ModelAndView("page");
+		mv.addObject("title", "Calendar");
+		
+		//Passing the list of customers
+		//mv.addObject("customers", customerDetailsDAO.getAllCustomerDetails());
+		
+		mv.addObject("userClickCalendar", true);
+		return mv;
+	}
+	
+	@RequestMapping(value="/getcalendardata",method=RequestMethod.GET)
+
+	   public  @ResponseBody List<LifeInsurance>  getCalendarData(HttpServletRequest request, HttpServletResponse response) {
+		    
+			List<LifeInsurance> obj = new ArrayList<>();
+			try {
+		   		obj  = LifeInsuranceDAO.lifeInsuranceList();			
+			} catch (Exception e) {
+				// TODO: handle exception
+				System.out.println(e);
+			}
+		    return obj;
+	       // your logic next
+	   }
+
 	
 	@RequestMapping(value= {"/addcustomer"})
 	public ModelAndView add()
@@ -284,4 +319,21 @@ public class PageController
 	      }
 	      return cusomterMap;
      }
+	 
+		//Get Require By name for viewlifeinsurance
+		@RequestMapping(value= "/viewcustomerlifeinsurance")
+		public ModelAndView viewCusomterLifeInsurance(@RequestParam(value="name" , required = true) String name)
+		{
+			
+			ModelAndView mv = new ModelAndView("page");
+			mv.addObject("title", "Life Insuracne");
+			
+			//Passing the list of customers
+			mv.addObject("lifeinsurance", LifeInsuranceDAO.lifeInsuranceCustomerWiseList(name));
+			
+			mv.addObject("userClickLifeInsurance", true);
+			return mv;
+		}
+		
+	
 }

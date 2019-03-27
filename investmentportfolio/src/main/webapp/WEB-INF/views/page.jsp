@@ -7,6 +7,7 @@
 <spring:url var="vendor" value="/resources/vendor" />
 <spring:url var="css" value="/resources/css" />
 <spring:url var="js" value="/resources/js" />
+<spring:url var="image" value="/resources/image" />
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,8 +24,24 @@
   <link href="${vendor}/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
   <!-- Page level plugin CSS-->
   <link href="${vendor}/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+  
   <!-- Custom styles for this template-->
   <link href="${css}/sb-admin.css" rel="stylesheet">
+  
+  
+      <c:if test="${userClickCalendar == true}">
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet"> -->  
+		<link href = "https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.3.2/fullcalendar.min.css" rel="stylesheet">
+	</c:if>
+  
+  
+
+  
+  <style>
+	body  {
+	/*  background-image: url("invest-online.jpg");*/
+	}
+	</style>
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
@@ -41,6 +58,12 @@
 		</c:if>
 		<!-- Load Dashboard End -->
 		
+		<!-- Load Calendar View -->
+		<c:if test="${userClickCalendar == true}">
+			<%@include file="./shared/header.jsp" %>
+			<%@include file="calendar.jsp"%>
+		</c:if>
+		<!-- End Load Calendar View -->
 		<!-- Load Click Start Start -->
 		<c:if test="${userClickAdd == true}">
 			<%@include file="./shared/header.jsp" %>
@@ -126,8 +149,51 @@
     <script src="${js}/sb-admin-datatables.js"></script>
     <script src="${js}/sb-admin-charts.js"></script>
     <script src="${js}/validate.js"></script>
+    
+    <c:if test="${userClickCalendar == true}">
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.3.2/fullcalendar.min.js"></script>
+	<script>
+	$(document).ready(function() {
+	    // page is now ready, initialize the calendar..
+	    var calendarData = [];
+	    
+	    $.ajax({
+		      type: "GET",
+		      contentType : 'application/json',
+		      dataType : 'json',
+		      url: "/investmentportfolio/getcalendardata",
+		      success :function(result) {
+		       // do what ever you want with data
+		     	console.log(result);
+		        for(var i = 0 ; i < result.length ; i++){
+		        	var innerdata = result[i];
+		        	//innerdata
+		        	var obj = {};
+		        	obj["title"] = innerdata.customername +'--'+ innerdata.schemename;
+		        	obj["start"] = innerdata.policydate
+		        	calendarData.push(obj);
+		        }
+		        
+		        $('#calendar').fullCalendar({
+			        weekends: true,
+			        dayClick: function() {
+			        //  alert('a day has been clicked!');
+			        },
+			        events: calendarData,
+			        defaultView: 'month'
+			    });
+		      }
+		  });
+	    
+    });
+	</script>
+	</c:if>
 
-
+	
+	
 	<script>
 	
 	function selectBank(){

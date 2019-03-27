@@ -145,8 +145,8 @@
 	                  <th>${customer.customerEmail}</th>
 	                  <th>${customer.customerPhone}</th>
 	                  <th>${customer.customerPAN}</th>
-	                  <th>${customer.isLifeInsurance}</th>
-	                  <th>${customer.isFixedDeposite}</th>
+	                  <th><a href="${contextRoot}/investmentportfolio/viewcustomerlifeinsurance?name=${customer.customerName}">${customer.isLifeInsurance}</a></th>
+	                  <th><a href="${contextRoot}/investmentportfolio/viewcustomerfixeddeposit?name=${customer.customerName}">${customer.isFixedDeposite}</a></th>
 	                <!-- <th>View</th> -->  
 	                </tr>
               	</c:forEach>

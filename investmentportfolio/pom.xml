@@ -12,7 +12,8 @@
   	<junit.version>3.8.1</junit.version>
   	<spring.version> 4.3.5.RELEASE</spring.version>
   	<jstl.version>1.2</jstl.version>
-  	
+  	<jackson.version>2.7.5</jackson.version>
+	
   </properties>
   <dependencies>
   
@@ -21,6 +22,7 @@
         <artifactId>jstl</artifactId>
         <version>1.2</version>
     </dependency>
+		
 		
 	  <!--backend dependency-->
 	  <dependency>
@@ -45,6 +47,7 @@
 	      <version>${junit.version}</version>
 	      <scope>provided</scope>
     </dependency>
+    
 	<!-- spring-web-mvc -->
 	<dependency>
 	    <groupId>org.springframework</groupId>
@@ -52,6 +55,12 @@
 	    <version>${spring.version}</version>
 	</dependency>
     
+    <dependency>
+		<groupId>com.fasterxml.jackson.core</groupId>
+		<artifactId>jackson-databind</artifactId>
+		<version>${jackson.version}</version>
+	</dependency>
+  
   </dependencies>
   <build>
   	<plugins>

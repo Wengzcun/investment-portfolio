@@ -11,6 +11,12 @@
             <span class="nav-link-text">Dashboard</span>
           </a>
         </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+          <a class="nav-link" href="${contextRoot}/investmentportfolio/getCalendarView">
+            <i class="fa fa-fw fa-dashboard"></i>
+            <span class="nav-link-text">Calendar</span>
+          </a>
+        </li>
        <!--  <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
           <a class="nav-link" href="${contextRoot}/investmentportfolio/fundcategory">
             <i class="fa fa-fw fa-dashboard"></i>

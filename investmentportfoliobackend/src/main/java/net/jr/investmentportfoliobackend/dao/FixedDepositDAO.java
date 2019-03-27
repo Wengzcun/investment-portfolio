@@ -8,6 +8,7 @@ public interface FixedDepositDAO {
 
 	FixedDeposite get(int id);
 	List<FixedDeposite> fixedDepositeList();
+	List<FixedDeposite> fixedDepositeCustomerWiseList(String customerName);
 	boolean add(FixedDeposite fixedDeposite) ;
 	
 }

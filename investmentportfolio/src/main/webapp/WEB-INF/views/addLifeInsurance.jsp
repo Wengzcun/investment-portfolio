@@ -66,11 +66,11 @@
 							  </div>
 							  <div class="form-group">
 							    <label for="Name">Policy Date:</label>
-							    <sf:input type="text" path="policydate" id="name" name="policydate" class="form-control"></sf:input>
+							    <sf:input type="text" path="policydate" id="name" name="policydate" class="form-control" placeholder="yyyy-mm-dd"></sf:input>
 							  </div>
 							  <div class="form-group">
 							    <label for="Name">Policy Last Date:</label>
-							    <sf:input type="text" path="policylastdate" id="name" name="policylastdate" class="form-control"></sf:input>
+							    <sf:input type="text" path="policylastdate" id="name" name="policylastdate" class="form-control" placeholder="yyyy-mm-dd"></sf:input>
 							  </div>
 							  <div class="panel-footer">
 								  <a class="btn btn-secondary"  href="${contextRoot}/investmentportfolio/lifeinsurance">Cancel</a>
